@@ -1,1 +1,24 @@
-<p>board works!</p>
+<div class="links">
+  <a (click)="makeMenuVisible(true)">Back to Main Menu</a>
+  <a (click)="newGame()">New game</a>
+</div>
+<div *ngIf="gameOn() === true; else victory">
+  <div id="grid-container" [class]="size">
+    <div
+      *ngFor="let tile of tiles"
+      class="grid-item"
+      [style.visibility]="isZero(tile) ? 'visible' : 'hidden'"
+      (click)="swap(tile)"
+    >
+      <div class="inner-tile">
+        {{ tile }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #victory>
+  <div class="victory-message">
+    <p>Victory! Play again?</p>
+  </div>
+</ng-template>

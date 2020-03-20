@@ -1,0 +1,81 @@
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.title {
+  text-align: center;
+}
+
+.title-2 {
+  text-align: center;
+  font-size: 3vw;
+}
+
+h1 {
+  color: #353b3c;
+  font-size: 10vw;
+  margin-top: 0;
+}
+
+.links {
+  text-align: center;
+}
+
+a {
+  color: #20bf6b;
+  text-transform: uppercase;
+  font-size: 2vw;
+  margin: 20px 10px;
+  padding: 20px;
+  border: 4px solid #20bf6b;
+  border-radius: 6px;
+  text-decoration: none;
+  user-select: none;
+  cursor: default;
+}
+
+a:hover {
+  color: #3de08a;
+  border-color: #3de08a;
+  transition-duration: 0.5s;
+}
+
+#grid-container {
+  margin: 20px;
+  padding: 20px;
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  gap: 1vw;
+}
+
+.grid-container-eight {
+  grid-template-columns: 10vw 10vw 10vw;
+  grid-template-rows: 10vw 10vw 10vw;
+}
+
+.grid-container-fifteen {
+  grid-template-columns: 10vw 10vw 10vw 10vw;
+  grid-template-rows: 10vw 10vw 10vw 10vw;
+}
+
+.grid-item {
+  background-color: #fffffb;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+  line-height: 10vw;
+  font-size: 3vw;
+  user-select: none;
+}
+
+.grid-item:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+  transition-duration: 0.5s;
+}
+
+.victory-message {
+  text-align: center;
+}
+
+p {
+  font-size: 5vw;
+}
