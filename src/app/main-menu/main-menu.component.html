@@ -1,0 +1,22 @@
+<div *ngIf="mainMenuVisible === true; else game">
+  <div class="title-2">
+    <h2>Choose a game mode:</h2>
+  </div>
+  <div class="links">
+    <a (click)="gameMode(9, 'grid-container-eight')" (click)="makeDisappear()"
+      >8-puzzle</a
+    >
+    <a
+      (click)="gameMode(16, 'grid-container-fifteen')"
+      (click)="makeDisappear()"
+      >15-puzzle</a
+    >
+  </div>
+</div>
+<ng-template #game>
+  <app-board
+    [numberOfTiles]="numberOfTiles"
+    (boolToEmit)="getBool($event)"
+    [size]="size"
+  ></app-board>
+</ng-template>
