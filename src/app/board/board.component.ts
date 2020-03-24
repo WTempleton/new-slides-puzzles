@@ -11,7 +11,7 @@ export class BoardComponent implements OnInit {
   @Input() size;
   @Output() boolToEmit = new EventEmitter<boolean>();
 
-  makeMenuVisible(bool) {
+  makeMenuVisible(bool: boolean) {
     this.boolToEmit.emit(bool);
   }
 
@@ -23,59 +23,45 @@ export class BoardComponent implements OnInit {
     this.tiles = shuffle(this.tilesSet);
   }
 
-  isZero(value) {
-    if (value === 0) {
-      return false;
-    }
-    return true;
+  isZero(value: number) {
+    return value !== 0;
   }
 
-  canSwap(tile) {
-    const tileIndex = this.tiles.indexOf(tile);
-    const zeroIndex = this.tiles.indexOf(0);
-    if (
+  canSwap(tile: number) {
+    const tileIndex: number = this.tiles.indexOf(tile);
+    const zeroIndex: number = this.tiles.indexOf(0);
+    const moveUpDown =
       tileIndex === zeroIndex + Math.sqrt(this.tiles.length) ||
-      tileIndex === zeroIndex - Math.sqrt(this.tiles.length)
-    ) {
-      return true;
-    }
-    if (
+      tileIndex === zeroIndex - Math.sqrt(this.tiles.length);
+    const moveLeft =
       tileIndex === zeroIndex + 1 &&
-      tileIndex % Math.sqrt(this.tiles.length) !== 0
-    ) {
-      return true;
-    }
-    if (
+      tileIndex % Math.sqrt(this.tiles.length) !== 0;
+    const moveRight =
       tileIndex === zeroIndex - 1 &&
       tileIndex % Math.sqrt(this.tiles.length) !==
-        Math.sqrt(this.tiles.length) - 1
-    ) {
-      return true;
-    }
-    return false;
+        Math.sqrt(this.tiles.length) - 1;
+
+    return moveUpDown || moveLeft || moveRight;
   }
 
-  swap(tile) {
+  swap(tile: number) {
     if (this.canSwap(tile) === true) {
-      const tileIndex = this.tiles.indexOf(tile);
-      const zeroIndex = this.tiles.indexOf(0);
+      const tileIndex: number = this.tiles.indexOf(tile);
+      const zeroIndex: number = this.tiles.indexOf(0);
       this.tiles[tileIndex] = 0;
       this.tiles[zeroIndex] = tile;
     }
   }
 
-  arraysEqual(a, b) {
-    for (var i = 0; i < a.length; ++i) {
+  arraysEqual(a: number[], b: number[]) {
+    for (let i = 0; i < a.length; ++i) {
       if (a[i] !== b[i]) return false;
     }
     return true;
   }
 
   gameOn() {
-    if (this.arraysEqual(this.tiles, this.tilesSet)) {
-      return false;
-    }
-    return true;
+    return !this.arraysEqual(this.tiles, this.tilesSet);
   }
 
   constructor() {}

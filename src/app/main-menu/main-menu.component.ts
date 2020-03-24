@@ -6,10 +6,11 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./main-menu.component.css"]
 })
 export class MainMenuComponent implements OnInit {
-  mainMenuVisible = true;
+  mainMenuVisible: boolean = true;
   size: string = "";
+  numberOfTiles: number = 9;
 
-  getBool(bool) {
+  getBool(bool: boolean) {
     this.mainMenuVisible = bool;
   }
 
@@ -17,16 +18,9 @@ export class MainMenuComponent implements OnInit {
     this.mainMenuVisible = false;
   }
 
-  numberOfTiles: number = 9;
-
-  eightMode() {
-    this.numberOfTiles = 9;
-    this.size = "grid-container-eight";
-  }
-
-  fifteenMode() {
-    this.numberOfTiles = 16;
-    this.size = "grid-container-fifteen";
+  gameMode(number, containerClass) {
+    this.numberOfTiles = number;
+    this.size = containerClass;
   }
 
   constructor() {}

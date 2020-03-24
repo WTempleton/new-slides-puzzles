@@ -3,8 +3,14 @@
     <h2>Choose a game mode:</h2>
   </div>
   <div class="links">
-    <a (click)="eightMode()" (click)="makeDisappear()">8-puzzle</a>
-    <a (click)="fifteenMode()" (click)="makeDisappear()">15-puzzle</a>
+    <a (click)="gameMode(9, 'grid-container-eight')" (click)="makeDisappear()"
+      >8-puzzle</a
+    >
+    <a
+      (click)="gameMode(16, 'grid-container-fifteen')"
+      (click)="makeDisappear()"
+      >15-puzzle</a
+    >
   </div>
 </div>
 <ng-template #game>
